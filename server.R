@@ -13,8 +13,8 @@ require(tidyverse)
 #library(stringr)
 #library(data.table)
 
-X <- readRDS("WSTC6_Abstracts.rds")
-Y <- readRDS("WSTC6_Overview.rds")
+X <- readRDS("data/WSTC6_Abstracts.rds")
+Y <- readRDS("data/WSTC6_Overview.rds")
 
 ## Change these
 YEAR <- 2020

@@ -15,11 +15,11 @@ WSTC <- "WSTC6"
 ############
 
 
-Z <- readRDS("WSTC6_keywords.rds")
+Z <- readRDS("data/WSTC6_keywords.rds")
 Z$keywords <- as.character(Z$keywords)
 
 
-X <- readRDS("WSTC6_Abstracts.rds")
+X <- readRDS("data/WSTC6_Abstracts.rds")
 #X <- enc2utf8(X)
 X$ids <-paste(as.character(X$Last),', ',as.character(X$First),sep='')
 X$Affiliation <- as.character(X$Affiliation)
@@ -35,14 +35,15 @@ shinyUI(fluidPage(
   extendShinyjs(text = jscode),
   extendShinyjs("www/app-shinyjs.js", functions = c("updateHistory")),
   tags$head(
-    tags$script(src="countdown.js"),
+    #tags$script(src="countdown.js"),
     tags$link(rel="stylesheet", type = "text/css", href = "https://fonts.googleapis.com/css?family=Roboto:100,200,300,500")
   ),
+  
   windowTitle = paste(WSTC,'schedule'),
   selected = 'Home',
   theme = shinytheme('spacelab'),
   includeCSS("style.css"),
-  includeCSS("countdown.css"),
+  #includeCSS("countdown.css"),
   tabsetPanel(
     id = "tabs",
     
@@ -50,16 +51,16 @@ shinyUI(fluidPage(
              fluidRow(class='homrow1',
                       column(12,
                              tags$a(img(src='WSTC6_logo_white_text.png',width='65%'),href='https://twitter.com/search?f=tweets&vertical=default&q=%23WSTC5&src=typd&lang=en')
-                      ),
-                      column(4,offset=8,
-                             fluidRow(
-                               column(12,class='timer',
-                                      h1('Countdown to #WSTC6')
-                               ),
-                               column(12,HTML("<div class='countdown' data-date='2020-05-04-07-00-0'></div>"))     
                              )
+                      #column(4,offset=8,
+                      #       fluidRow(
+                      #         column(12,class='timer',
+                      #                h1('Countdown to #WSTC6')
+                      #         ),
+                      #         column(12,HTML("<div class='countdown' data-date='2020-05-04-07-00-0'></div>"))     
+                             #)
                              
-                      )
+                      #)
              ),
              
              
